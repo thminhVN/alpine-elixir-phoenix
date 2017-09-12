@@ -19,7 +19,8 @@ RUN \
       nodejs nodejs-current-npm && \
     npm install npm -g --no-progress && \
     update-ca-certificates --fresh && \
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* &&\
+    apk add bash
 
 # Add local node module binaries to PATH
 ENV PATH=./node_modules/.bin:$PATH \
