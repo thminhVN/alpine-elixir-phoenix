@@ -17,10 +17,10 @@ RUN \
     apk --no-cache --update add \
       git make g++ wget curl inotify-tools \
       nodejs nodejs-current-npm && \
+    apk add --update bash &&\
     npm install npm -g --no-progress && \
     update-ca-certificates --fresh && \
-    rm -rf /var/cache/apk/* &&\
-    apk add bash
+    rm -rf /var/cache/apk/*
 
 # Add local node module binaries to PATH
 ENV PATH=./node_modules/.bin:$PATH \
@@ -32,4 +32,4 @@ RUN mix local.hex --force && \
 
 WORKDIR /opt/app
 
-CMD ["/bin/sh"]
+CMD ["/bin/bash"]
